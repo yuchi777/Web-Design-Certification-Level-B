@@ -2,9 +2,9 @@
 
 class DB{
 
-    private $dsn = "mysql:host=localhost ; charset=utf8; dbname = db01" ;
+    private $dsn = "mysql:host=localhost;charset=utf8;dbname=db01_story"; //不能有空格
     private $root ='root';
-    private $password = '';
+    private $password ="";
     private $table;
     private $pdo;
 
@@ -15,6 +15,7 @@ class DB{
         
         $this->table = $table;
         $this->pdo = new PDO($this->dsn, $this->root,$this->password);
+        // $this->pdo =new PDO("mysql:host=localhost;dbname=db01_story", $this->root, $this->password);
     }
 
 
@@ -23,18 +24,49 @@ class DB{
     // 不定參數一定放在所有參數的最後，前面的參數表示一定要有，否則會出現參數缺少的錯誤。
     public function all(...$arg){
 
-        $sql = "select * from $this->table" ;
+        $sql = "select * from $this->table " ;
+        
+        // $arg=[] or [陣列],[SQL字串],[陣列,SQL字串]
+        if(isset($arg[0])){
+
+            if(is_array($arg[0])){
+                echo "處理陣列";
+            }else{
+                //為字串
+                $sql = $sql.$arg[0];
+            }
+
+            if(isset($arg[1])){
+                //為字串
+                $sql = $sql.$arg[1];
+            }
+        }
+        
+        
+        echo $sql;
         //執行 PDO 物件並將sql語法導向到裡面的 query() 函數。讓 PDO 進行 SQL 連接並且執行 query()。
         //fetchAll(PDO::FETCH_ASSOC)
         return $this->pdo->query($sql)->fetchAll();        
-
     }
-
-
 
 
 }
 
+
+$user = new DB ("user");
+echo "<pre>";
+print_r($user->all());
+echo "</pre><hr>";
+
+
+echo "<pre>";
+print_r($user->all("where name='amy' "));
+echo "</pre><hr>";
+
+
+echo "<pre>";
+print_r($user->all("where `visible`='Y'", "order by `id` DESC "));
+echo "</pre><hr>";
 
 
 
