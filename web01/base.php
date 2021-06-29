@@ -30,7 +30,17 @@ class DB{
         if(isset($arg[0])){
 
             if(is_array($arg[0])){
-                echo "處理陣列";
+                //處理陣列 ["欄位"=>"值","欄位"=>"值"]
+                //SQL語法 where `欄位`='值' && `欄位`='值'
+
+                foreach ($arg[0] as $key => $value) {
+                    
+                    $tmp[] = sprintf("`%s`='%s'", $key,$value ) ;
+                }
+
+                // print_r (implode(" && ", $tmp)); //&&前後空白
+                $sql = $sql ." where ". implode(" && ", $tmp); //where前後注意空白
+
             }else{
                 //為字串
                 $sql = $sql.$arg[0];
@@ -55,17 +65,17 @@ class DB{
 
 $user = new DB ("user");
 echo "<pre>";
-print_r($user->all());
+print_r($user->all(['name'=>'amy' , 'visible'=>'Y']));
 echo "</pre><hr>";
 
 
 echo "<pre>";
-print_r($user->all("where name='amy' "));
+print_r($user->all(" where `name`='amy' "));
 echo "</pre><hr>";
 
 
 echo "<pre>";
-print_r($user->all("where `visible`='Y'", "order by `id` DESC "));
+print_r($user->all(" where `visible`='Y'", "order by `id` DESC "));
 echo "</pre><hr>";
 
 
