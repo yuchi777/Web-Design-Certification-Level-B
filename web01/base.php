@@ -58,7 +58,7 @@ class DB{
         }
         
         
-        echo $sql;
+        // echo $sql;
         //執行 PDO 物件並將sql語法導向到裡面的 query() 函數。讓 PDO 進行 SQL 連接並且執行 query()。
         //fetchAll(PDO::FETCH_ASSOC)
         return $this->pdo->query($sql)->fetchAll();        
@@ -86,7 +86,7 @@ class DB{
             $sql = $sql . $arg[1];
         }
 
-        echo $sql."<br>";
+        // echo $sql."<br>";
         return $this->pdo->query($sql)->fetchColumn();
     }
     /****************************************************************************************** */
@@ -107,7 +107,7 @@ class DB{
         }
 
 
-        echo $sql;
+        // echo $sql;
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
     /******************************************************************************************/
@@ -128,7 +128,7 @@ class DB{
         }
 
 
-        echo $sql."</br>";
+        // echo $sql."</br>";
         return $this->pdo->exec($sql);
     }
     /******************************************************************************************/
@@ -168,79 +168,79 @@ class DB{
 
 
 //測試↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-$user = new DB ("user");
-echo "<pre>";
-print_r($user->all(['name'=>'amy' , 'visible'=>'Y']));
-echo "</pre><hr>";
+// $user = new DB ("user");
+// echo "<pre>";
+// print_r($user->all(['name'=>'amy' , 'visible'=>'Y']));
+// echo "</pre><hr>";
 
 
-echo "<pre>";
-print_r($user->all(" where `name`='amy' "));
-echo "</pre><hr>";
+// echo "<pre>";
+// print_r($user->all(" where `name`='amy' "));
+// echo "</pre><hr>";
 
 
-echo "<pre>";
-print_r($user->all(" where `visible`='Y'", "order by `id` DESC "));
-echo "</pre><hr>";
+// echo "<pre>";
+// print_r($user->all(" where `visible`='Y'", "order by `id` DESC "));
+// echo "</pre><hr>";
 
-/******************************************************************************************/
-echo "<pre>";
-print_r($user->count(['name'=>'amy' , 'visible'=>'Y']));
-echo "</pre><hr>";
-
-
-echo "<pre>";
-print_r($user->count(" where `name`='amy' "));
-echo "</pre><hr>";
+// /******************************************************************************************/
+// echo "<pre>";
+// print_r($user->count(['name'=>'amy' , 'visible'=>'Y']));
+// echo "</pre><hr>";
 
 
-echo "<pre>";
-print_r($user->count(" where `visible`='Y'", "order by `id` DESC "));
-echo "</pre><hr>";
-/******************************************************************************************/
+// echo "<pre>";
+// print_r($user->count(" where `name`='amy' "));
+// echo "</pre><hr>";
 
 
-echo "<pre>";
-print_r($user->find(3));
-echo "</pre><hr>";
+// echo "<pre>";
+// print_r($user->count(" where `visible`='Y'", "order by `id` DESC "));
+// echo "</pre><hr>";
+// /******************************************************************************************/
 
-echo "<pre>";
-print_r($user->find([ 'level'=>'2', 'visible'=> 'N' ]));
-echo "</pre><hr>";
-/******************************************************************************************/
 
-//刪除資料表stories裡面的資料
-$store = new DB ("stories");
-echo "<pre>";
-print_r($store->del(3));
-echo "</pre><hr>";
+// echo "<pre>";
+// print_r($user->find(3));
+// echo "</pre><hr>";
 
-echo "<pre>";
-print_r($store->del(['file'=>'123']));
-echo "</pre><hr>";
-/******************************************************************************************/
+// echo "<pre>";
+// print_r($user->find([ 'level'=>'2', 'visible'=> 'N' ]));
+// echo "</pre><hr>";
+// /******************************************************************************************/
 
-echo "<pre>";
-print_r($store->save(['id'=>'9',
-                    'name'=>'台灣大車隊',
-                    'file'=>'bg0.jpg',
-                    'intro_chinese'=>'999',
-                    'intro_english'=>'999',
-                    'visible' =>'Y'
-                    ])
-        );
-echo "</pre><hr>";
+// //刪除資料表stories裡面的資料
+// $store = new DB ("stories");
+// echo "<pre>";
+// print_r($store->del(3));
+// echo "</pre><hr>";
 
-echo "<pre>";
-print_r($store->save([
-                    'name'=>'熊貓',
-                    'file'=>'bg5.jpg',
-                    'intro_chinese'=>'555',
-                    'intro_english'=>'555',
-                    'visible' =>'Y'
-                    ])
-        );
-echo "</pre><hr>";
+// echo "<pre>";
+// print_r($store->del(['file'=>'123']));
+// echo "</pre><hr>";
+// /******************************************************************************************/
+
+// echo "<pre>";
+// print_r($store->save(['id'=>'9',
+//                     'name'=>'台灣大車隊',
+//                     'file'=>'bg0.jpg',
+//                     'intro_chinese'=>'999',
+//                     'intro_english'=>'999',
+//                     'visible' =>'Y'
+//                     ])
+//         );
+// echo "</pre><hr>";
+
+// echo "<pre>";
+// print_r($store->save([
+//                     'name'=>'熊貓',
+//                     'file'=>'bg5.jpg',
+//                     'intro_chinese'=>'555',
+//                     'intro_english'=>'555',
+//                     'visible' =>'Y'
+//                     ])
+//         );
+// echo "</pre><hr>";
 /******************************************************************************************/
 
 
