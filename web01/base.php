@@ -10,7 +10,8 @@ class DB{
 
     //設定建構式
     //PDO連線
-    //Apache->Config->httpd.conf->DocumentRoot&Directory "C:\Users\yuchi\Documents\github\Web-Design-Certification-Level-B\web01"
+    //Apache->Config->httpd.conf->DocumentRoot & Directory 
+    //"C:\Users\yuchi\Documents\github\Web-Design-Certification-Level-B\web01"
     public function __construct($table){
         
         $this->table = $table;
@@ -19,6 +20,10 @@ class DB{
     }
 
 
+
+
+
+    /****************************************************************************************** */
 
     //($a,…$arg)的參數寫法稱為"不定參數"，表示不確定參數會有幾個，而所有的參數都會被放入陣列中。
     // 不定參數一定放在所有參數的最後，前面的參數表示一定要有，否則會出現參數缺少的錯誤。
@@ -58,6 +63,36 @@ class DB{
         //fetchAll(PDO::FETCH_ASSOC)
         return $this->pdo->query($sql)->fetchAll();        
     }
+    /****************************************************************************************** */
+
+
+    public function count(...$arg){
+        $sql = "select count(*) from $this->table ";
+
+        if( isset($arg[0]) ){
+            if(is_array($arg[0])){
+                foreach ($arg[0] as $key => $value) {
+                    $tmp[]= sprintf(" `%s`='%s' ", $key, $value);
+                }
+
+                $sql = $sql." where ".implode(" && ",$tmp);
+            }else{
+
+                $sql = $sql . $arg[0];
+            }
+        }
+
+        if(isset($arg[1])){
+            $sql = $sql . $arg[1];
+        }
+
+        echo $sql."<br>";
+        return $this->pdo->query($sql)->fetchColumn();
+    }
+    /****************************************************************************************** */
+
+
+
 
 
 }
@@ -76,6 +111,21 @@ echo "</pre><hr>";
 
 echo "<pre>";
 print_r($user->all(" where `visible`='Y'", "order by `id` DESC "));
+echo "</pre><hr>";
+
+/******************************************************************************************/
+echo "<pre>";
+print_r($user->count(['name'=>'amy' , 'visible'=>'Y']));
+echo "</pre><hr>";
+
+
+echo "<pre>";
+print_r($user->count(" where `name`='amy' "));
+echo "</pre><hr>";
+
+
+echo "<pre>";
+print_r($user->count(" where `visible`='Y'", "order by `id` DESC "));
 echo "</pre><hr>";
 
 
