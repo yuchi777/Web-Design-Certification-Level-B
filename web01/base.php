@@ -112,6 +112,27 @@ class DB{
     }
     /******************************************************************************************/
 
+    public function del($id){
+        $sql = " delete from $this->table";
+
+        if(is_array($id)){
+            foreach ($id as $key => $value) {
+                $tmp[] = sprintf(" `%s`='%s' ", $key, $value);
+
+            }
+
+            $sql = $sql . " where " .implode(" && ", $tmp);
+        }else{
+
+            $sql = $sql . " where `id`='$id'";
+        }
+
+
+        echo $sql."</br>";
+        return $this->pdo->exec($sql);
+    }
+    /******************************************************************************************/
+    
 
 }
 
@@ -160,7 +181,17 @@ echo "</pre><hr>";
 echo "<pre>";
 print_r($user->find([ 'level'=>'2', 'visible'=> 'N' ]));
 echo "</pre><hr>";
+/******************************************************************************************/
 
+//刪除資料表stories裡面的資料
+$store = new DB ("stories");
+echo "<pre>";
+print_r($store->del(3));
+echo "</pre><hr>";
+
+echo "<pre>";
+print_r($store->del(['file'=>'123']));
+echo "</pre><hr>";
 
 
 
