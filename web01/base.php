@@ -134,6 +134,26 @@ class DB{
     /******************************************************************************************/
     
 
+    //規範傳入的參數為一個陣列,陣列格式為 `欄位` => "值", 所以不再另外加判斷式is_array()
+    public function save($array){
+        if(isset($array['id'])){
+            //update有id
+            foreach ($array as $key => $value) {
+                $tmp[] = sprintf(" `%s`='%s' ", $key, $value);
+            }
+
+            $sql = "update $this->table set " . implode(',', $tmp). " where `id`='{$array['id']}' ";
+        }else{
+
+        }
+
+
+        echo $sql."<br>";
+        return $this->pdo->exec($sql);
+    }
+
+
+
 }
 
 
@@ -191,6 +211,18 @@ echo "</pre><hr>";
 
 echo "<pre>";
 print_r($store->del(['file'=>'123']));
+echo "</pre><hr>";
+/******************************************************************************************/
+
+echo "<pre>";
+print_r($store->save(['id'=>'9',
+                    'name'=>'台灣大車隊',
+                    'file'=>'bg0.jpg',
+                    'intro_chinese'=>'999',
+                    'intro_english'=>'999',
+                    'visible' =>'Y'
+                    ])
+        );
 echo "</pre><hr>";
 
 
