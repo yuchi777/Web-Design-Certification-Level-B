@@ -144,7 +144,11 @@ class DB{
 
             $sql = "update $this->table set " . implode(',', $tmp). " where `id`='{$array['id']}' ";
         }else{
-
+            //insert
+            //`,` & ','
+            //array_keys()
+            $sql = " insert into $this->table (`". implode("`,`", array_keys($array))  ."`) 
+                                        values ('". implode("','", $array) ."') ";
         }
 
 
@@ -225,6 +229,17 @@ print_r($store->save(['id'=>'9',
         );
 echo "</pre><hr>";
 
+echo "<pre>";
+print_r($store->save([
+                    'name'=>'熊貓',
+                    'file'=>'bg5.jpg',
+                    'intro_chinese'=>'555',
+                    'intro_english'=>'555',
+                    'visible' =>'Y'
+                    ])
+        );
+echo "</pre><hr>";
+/******************************************************************************************/
 
 
 
