@@ -92,12 +92,35 @@ class DB{
     /****************************************************************************************** */
 
 
+    public function find($id){
+        $sql = "select * from $this->table ";
 
+        if(is_array($id)){
+            foreach ($id as $key => $value) {
+                $tmp[]=sprintf("`%s`='%s'", $key, $value);
+            }
+
+            $sql = $sql." where ".implode(" && ", $tmp);
+        }else{
+
+            $sql = $sql. " where `id`='$id' ";
+        }
+
+
+        echo $sql;
+        return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+    }
+    /******************************************************************************************/
 
 
 }
 
 
+
+
+
+
+//測試↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 $user = new DB ("user");
 echo "<pre>";
 print_r($user->all(['name'=>'amy' , 'visible'=>'Y']));
@@ -127,6 +150,18 @@ echo "</pre><hr>";
 echo "<pre>";
 print_r($user->count(" where `visible`='Y'", "order by `id` DESC "));
 echo "</pre><hr>";
+/******************************************************************************************/
+
+
+echo "<pre>";
+print_r($user->find(3));
+echo "</pre><hr>";
+
+echo "<pre>";
+print_r($user->find([ 'level'=>'2', 'visible'=> 'N' ]));
+echo "</pre><hr>";
+
+
 
 
 
