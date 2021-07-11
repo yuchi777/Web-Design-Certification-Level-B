@@ -155,11 +155,13 @@ class DB{
         echo $sql."<br>";
         return $this->pdo->exec($sql);
     }
-
-
-
 }
 
+
+    /******************************************************************************************/
+    function to($url){
+        header("location:".$url);
+    }
 
 
 
