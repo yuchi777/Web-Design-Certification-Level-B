@@ -43,7 +43,7 @@ class DB{
                     $tmp[] = sprintf("`%s`='%s'", $key,$value ) ;
                 }
 
-                // print_r (implode(" && ", $tmp)); //&&前後空白
+                // print_r (implode(" && ", $tmp)); //&&前後空白 //implode() 函數把數組元素組合為一個字符串。
                 $sql = $sql ." where ". implode(" && ", $tmp); //where前後注意空白
 
             }else{
@@ -152,7 +152,7 @@ class DB{
         }
 
 
-        echo $sql."<br>";
+        // echo $sql."<br>";
         return $this->pdo->exec($sql);
     }
 }
@@ -209,7 +209,7 @@ class DB{
 // echo "</pre><hr>";
 // /******************************************************************************************/
 
-// //刪除資料表stories裡面的資料
+//刪除資料表stories裡面的資料
 // $store = new DB ("stories");
 // echo "<pre>";
 // print_r($store->del(3));
