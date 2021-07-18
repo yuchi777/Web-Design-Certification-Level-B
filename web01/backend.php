@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<?php
+include "./base.php";
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0068)?do=admin&redo=title -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -18,7 +22,7 @@
 			<div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
 		</div>
 	</div>
-	<iframe style="display:none;" name="back" id="back"></iframe>
+	<!-- <iframe style="display:none;" name="back" id="back"></iframe> -->
 	<div id="main">
 		<a title="" href="?">
 			<div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div>
@@ -88,8 +92,8 @@
 				<?php
 				// include "./backend/title.php";
 
-				$file = (isset($_GET['do'])) ? $_GET['do'] : 'title';
-				$file = "./backend/" . $file . ".php";
+				$do = (isset($_GET['do'])) ? $_GET['do'] : 'title';
+				$file = "./backend/" . $do . ".php";
 
 				//判斷檔案是否存在
 				if (file_exists($file)) {
