@@ -1,5 +1,10 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
     <p class="t cent botli"><?= $ts[$do]; ?></p>
+
+
+
+    
+    <!-- 因為刪除iframe所以target在form表單裡刪除 -->
     <form method="post"  action="?do=tii">
         <table width="100%">
             <tbody>

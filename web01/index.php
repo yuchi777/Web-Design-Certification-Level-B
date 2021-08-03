@@ -1,3 +1,9 @@
+<?php
+//只載入一次,避免後續再載入第二次造成衝突(ex.變數)
+include_once "./base.php";
+?>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0040)http://127.0.0.1/test/exercise/collage/? -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -18,6 +24,7 @@
 			<div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
 		</div>
 	</div>
+	<!-- 刪除iframe  -->
 	<!-- <iframe style="display:none;" name="back" id="back"></iframe> -->
 	<div id="main">
 		<a title="" href="./home_files/home.htm">
@@ -31,18 +38,48 @@
 					<span class="t botli">主選單區</span>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
+
+
+
+
 					<span class="t">進站總人數 :
-						1 </span>
+					<?php
+						//資料庫total資料表
+						// $db=new DB("total");
+						// $db = $Total;
+						// $total=$db->find(1);
+						$total=$Total->find(1);
+
+
+						// echo $total[1]  =  total["total"];
+						// echo $total["total"];
+						// $Total->find(1) 是陣列結果
+						echo $Total->find(1)["total"];
+
+
+					?>
+					</span>
+
+
+
 				</div>
 			</div>
 
-			<!-- 載入main/login/news.php檔案 ---------------------------------------------------------------------->
+
+
+
+
+
+
+			<!-- 挖掉主要顯示區域到main.php -->
+			<!-- 載入front的main.php(預設)/ login.php/ news.php檔案 ---------------------------------------------------------------------->
 			<?php
 
 			$file = (isset($_GET['do'])) ? $_GET['do'] : 'main' ;
 			$file = "./front/" . $file . ".php";
 
 			//判斷檔案是否存在
+			//載入顯示區域
 			if(file_exists($file)){
 				include $file ;
 			}else{

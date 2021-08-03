@@ -2,6 +2,11 @@
 include "./base.php";
 ?>
 
+
+
+
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0068)?do=admin&redo=title -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,6 +27,7 @@ include "./base.php";
 			<div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
 		</div>
 	</div>
+	<!-- 刪除iframe  -->
 	<!-- <iframe style="display:none;" name="back" id="back"></iframe> -->
 	<div id="main">
 		<a title="" href="?">
@@ -31,6 +37,10 @@ include "./base.php";
 		<div id="ms">
 			<div id="lf" style="float:left;">
 				<div id="menuput" class="dbor">
+
+
+
+					<!-- 後台管理選單 ----------------------------------------------->
 					<!--主選單放此-->
 					<span class="t botli">後台管理選單</span>
 					<a style="color:#000; font-size:13px; text-decoration:none;" href="./backend.php?do=title">
@@ -74,7 +84,10 @@ include "./base.php";
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :
-						1 </span>
+					<?=
+					$Total->find(1)["total"];
+					?>
+					</span>
 				</div>
 			</div>
 			<div class="di" style="height:540px; border:#999 1px solid; width:76.5%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
@@ -83,12 +96,24 @@ include "./base.php";
 					<tbody>
 						<tr>
 							<td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;" class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a></td>
+
+
+
 							<td><button onclick="document.location.replace(&#39;index.php?do=login&#39;)" style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
+
+
+
 						</tr>
 					</tbody>
 				</table>
 
-				<!-- 動態載入頁面 -------------------------------------------------------->
+
+
+
+
+
+				<!-- 挖掉主要顯示區域到backend的 title.php -->
+				<!-- 動態載入顯示區域頁面 title.php / ad.php/menu.php等等共8個頁面-------------------------------------------------------->
 				<?php
 				// include "./backend/title.php";
 
@@ -96,6 +121,7 @@ include "./base.php";
 				$file = "./backend/" . $do . ".php";
 
 				//判斷檔案是否存在
+				// 載入顯示區域頁面
 				if (file_exists($file)) {
 					include $file;
 				} else {
