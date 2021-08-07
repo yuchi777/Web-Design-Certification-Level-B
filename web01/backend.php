@@ -39,7 +39,7 @@ include "./base.php";
 				<div id="menuput" class="dbor">
 
 
-
+					<!-- herf="?do=...", ?為當前頁 -->
 					<!-- 後台管理選單 ----------------------------------------------->
 					<!--主選單放此-->
 					<span class="t botli">後台管理選單</span>

@@ -30,6 +30,7 @@ $hs=["title" => "網站標題",
     "ad"=>"動態文字廣告",
     "mvim"=>"動畫圖片",
     "image"=>"校園映像資料",
+    "total"=>"進站總人數",
     "news"=>"最新消息資料",
     "admin"=>"管理者帳號",
     "menu"=>"選單"
@@ -169,7 +170,7 @@ class DB{
     }
     /******************************************************************************************/
     
-
+    //array有id做update,沒有做insert
     //規範傳入的參數為一個陣列,陣列格式為 `欄位` => "值", 所以不再另外加判斷式is_array()
     public function save($array){
         if(isset($array['id'])){
@@ -182,9 +183,9 @@ class DB{
         }else{
             //insert 增加
             //`,` & ','
-            //array_keys()
+            //array_keys()取array所有的key值
             $sql = " insert into $this->table (`". implode("`,`", array_keys($array))  ."`) 
-                                        values ('". implode("','", $array) ."') ";
+                                        values ('". implode("','", $array ) ."') "; //串所有值
         }
 
 
@@ -206,7 +207,7 @@ class DB{
 //測試↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 // $user = new DB ("user");
 // echo "<pre>";
-// print_r($user->all(['name'=>'amy' , 'visible'=>'Y']));
+// print_r($user->all(['name'=>'amy' , 'visible'=>'Y']) );
 // echo "</pre><hr>";
 
 
@@ -245,7 +246,7 @@ class DB{
 // echo "</pre><hr>";
 /******************************************************************************************/
 
-//刪除資料表stories裡面的資料
+// 刪除資料表stories裡面的資料
 // $store = new DB ("stories");
 // echo "<pre>";
 // print_r($store->del(3));
@@ -257,7 +258,7 @@ class DB{
 // /******************************************************************************************/
 
 // echo "<pre>";
-// print_r($store->save(['id'=>'9',
+// print_r($store->save(['id'=>'12',
 //                     'name'=>'台灣大車隊',
 //                     'file'=>'bg0.jpg',
 //                     'intro_chinese'=>'999',
@@ -269,10 +270,10 @@ class DB{
 
 // echo "<pre>";
 // print_r($store->save([
-//                     'name'=>'熊貓',
+//                     'name'=>'熊',
 //                     'file'=>'bg5.jpg',
-//                     'intro_chinese'=>'555',
-//                     'intro_english'=>'555',
+//                     'intro_chinese'=>'222',
+//                     'intro_english'=>'222',
 //                     'visible' =>'Y'
 //                     ])
 //         );
