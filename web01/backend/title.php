@@ -35,15 +35,15 @@
                     </td>
                     <td width="7%">
                         <!-- 顯示//有點選才送出值 -->
-                        <input type="radio" name="sh" value="<?= $value['id'] ?>"> 
+                        <input type="radio" name="sh" value="<?= $value['id'] ?>" <?= ($value['sh']==1)?"checked":"" ?> > 
                     </td>
                     <td width="7%">
                         <!-- 刪除,可多選所以存成陣列, del[] //有點選才送出值 -->
                         <input type="checkbox" name="del[]" value="<?= $value['id'] ?>">
                     </td>
                     <td>
-                        <!-- 更新圖片 -->
-                        <input type="button" value="更新圖片">
+                        <!-- 更新圖片 onclick / php?id= value['id']-->
+                        <input type="button" value="更新圖片" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/title_update.php?id=<?= $value['id'] ?>&#39;)">
                     </td>
                     <td>
                         <input type="hidden" name="id[]" value="<?= $value['id'] ?>">

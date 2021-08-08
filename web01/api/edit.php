@@ -27,6 +27,7 @@ foreach ($ids as $key => $id) {
         // echo "</pre>"."<br>";
 
         // 判斷顯示與否
+        //三元運算子
         $row['sh'] = (isset($_POST['sh']) && $_POST['sh'] == $id)?1:0;
         // if (isset($_POST['sh']) && $_POST['sh'] == $id) {
         //     $row['sh'] = 1;
