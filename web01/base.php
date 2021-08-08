@@ -1,9 +1,14 @@
 
 <?php
-session_start();
-
 //設台北時區
 date_default_timezone_set("Asia/Taipei");
+
+
+// base檔載入session其他include都會有
+session_start();
+
+
+
 
 
 //設置backend的抬頭文字
@@ -204,6 +209,18 @@ class DB{
 
     $Total = new DB("total");
     $Bottom = new DB("bottom");
+
+
+    // 建立session狀態管理
+    if(!isset($_SESSION['total'])){
+        $total = $Total->find(1);
+        $total['total'] = $total['total']+1;
+        // print_r($total);
+        $Total->save($total);
+
+        // 建立SESSION
+        $_SESSION['total'] = 0;
+    }
 
 
 //測試↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
