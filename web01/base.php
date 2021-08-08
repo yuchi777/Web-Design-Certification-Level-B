@@ -207,8 +207,11 @@ class DB{
     }
 
 
+
+    // 建立物件導向(資料表)///////////////////////////////////////////////
     $Total = new DB("total");
     $Bottom = new DB("bottom");
+    $Title = new DB("title");
 
 
     // 建立session狀態管理
