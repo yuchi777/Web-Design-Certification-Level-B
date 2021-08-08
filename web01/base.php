@@ -212,6 +212,7 @@ class DB{
     $Total = new DB("total");
     $Bottom = new DB("bottom");
     $Title = new DB("title");
+    $Ad = new DB("ad");
 
 
     // 建立session狀態管理
