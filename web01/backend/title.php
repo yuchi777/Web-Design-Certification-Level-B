@@ -27,21 +27,27 @@
                 <tr>
                     <td width="45%">
                         <!-- 圖片 -->
-                        <img src="../img/<?=$value['img']?>" style="width: 300px;height:30px">
+                        <img src="../web01/img/<?=$value['img']?>" style="width: 300px;height:30px">
                     </td>
                     <td width="23%">
                         <!-- 替代文字 -->
-                        <input type="text" name="text" value="<?= $value['text']?>">
+                        <input type="text" name="text[]" value="<?= $value['text']?>">
                     </td>
                     <td width="7%">
-                        <!-- 顯示 -->
+                        <!-- 顯示//有點選才送出值 -->
                         <input type="radio" name="sh" value="<?= $value['id'] ?>"> 
                     </td>
                     <td width="7%">
-                        <!-- 刪除,可多選所以存成陣列, del[] -->
-                        <input type="checkbox" name="del[]" id="<?= $value['id'] ?>">
+                        <!-- 刪除,可多選所以存成陣列, del[] //有點選才送出值 -->
+                        <input type="checkbox" name="del[]" value="<?= $value['id'] ?>">
                     </td>
-                    <td></td>
+                    <td>
+                        <!-- 更新圖片 -->
+                        <input type="button" value="更新圖片">
+                    </td>
+                    <td>
+                        <input type="hidden" name="id[]" value="<?= $value['id'] ?>">
+                    </td>
                 </tr>
 
                 <?php
