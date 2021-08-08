@@ -6,7 +6,7 @@
     
     <!-- 因為刪除iframe所以target在form表單裡刪除 -->
     <form method="post"  action="../web01/api/edit.php">
-        <table width="100%">
+        <table width="100%" style="text-align: center;">
             <tbody>
                 <tr class="yel">
                     <td width="45%">網站標題</td>
@@ -15,6 +15,39 @@
                     <td width="7%">刪除</td>
                     <td></td>
                 </tr>
+
+                <?php
+                    $rows = $Title->all();
+                    // echo "<pre>";
+                    // print_r($rows);
+                    // echo "</pre>";
+                    foreach ($rows as $key => $value) {
+                ?>
+
+                <tr>
+                    <td width="45%">
+                        <!-- 圖片 -->
+                        <img src="../img/<?=$value['img']?>" style="width: 300px;height:30px">
+                    </td>
+                    <td width="23%">
+                        <!-- 替代文字 -->
+                        <input type="text" name="text" value="<?= $value['text']?>">
+                    </td>
+                    <td width="7%">
+                        <!-- 顯示 -->
+                        <input type="radio" name="sh" value="<?= $value['id'] ?>"> 
+                    </td>
+                    <td width="7%">
+                        <!-- 刪除,可多選所以存成陣列, del[] -->
+                        <input type="checkbox" name="del[]" id="<?= $value['id'] ?>">
+                    </td>
+                    <td></td>
+                </tr>
+
+                <?php
+                }
+                ?>
+                
             </tbody>
         </table>
         <table style="margin-top:40px; width:70%;">
