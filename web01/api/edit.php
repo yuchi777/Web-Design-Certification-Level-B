@@ -6,7 +6,7 @@ echo "<pre>";
 print_r($post);
 echo "</pre>";
 
-$texts = $_POST['text'];
+// $texts = $_POST['text'];
 $ids = $_POST['id'];
 
 // 判斷資料表是誰
@@ -22,7 +22,7 @@ foreach ($ids as $key => $id) {
     } else {
 
         $row = $db->find($id);
-        $row['text'] = $texts[$key]; //資料庫依據$id撈出的資料text = 表單text欄位輸入的資料內容
+        // $row['text'] = $_POST['text'][$key]; //資料庫依據$id撈出的資料text = 表單text欄位輸入的資料內容
         // echo "<pre>";
         // print_r($row['text']); //資料庫根據$id找到的text欄位資料
         // echo "</pre>";
@@ -36,9 +36,15 @@ foreach ($ids as $key => $id) {
         switch ($table) {
             case 'title':
                 $row['sh'] = (isset($_POST['sh']) && $_POST['sh'] == $id)?1:0;
+                $row['text'] = $_POST['text'][$key];
+                break;
+            case 'admin':
+                $row['acc'] = $_POST['acc'][$key];
+                $row['pw'] = $_POST['pw'][$key];
                 break;
             default:
                 $row['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh']))?1:0;
+                $row['text'] = $_POST['text'][$key];
                 break;
         }
 

@@ -25,12 +25,22 @@ if(isset($_FILES['img']['tmp_name'])){
     $data['img'] = $_FILES['img']['name'];
 };
 
-// $data['img'] = "img1.jpg" ;
-$data['text'] = $_POST['text'];
+
+switch ($_POST['table']) {
+    // 管理者帳號管理
+    case 'admin':
+        $data['acc'] = $_POST['acc'];
+        $data['pw'] = $_POST['pw'];
+        break;
+    
+    // 其他
+    default:
+        // $data['img'] = "img1.jpg" ;
+        $data['text'] = $_POST['text'];
+        break;
+};
+
+
 
 $db->save($data);
-
 to("../backend.php?do=".$_POST['table']);
-
-?>
-
