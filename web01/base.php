@@ -213,6 +213,7 @@ class DB{
     $Bottom = new DB("bottom");
     $Title = new DB("title");
     $Ad = new DB("ad");
+    $Mvim = new DB("mvim");
 
 
     // 建立session狀態管理

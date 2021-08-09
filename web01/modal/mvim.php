@@ -18,5 +18,8 @@ include "../base.php";
 <div style="text-align: center;">
     <input type="submit" value="新增">
     <input type="reset" value="重置">
+
+    <!-- 資料表mvim -->
+    <input type="hidden" name="table" value="mvim">
 </div>
 </form

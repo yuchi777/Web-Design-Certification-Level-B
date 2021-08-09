@@ -8,6 +8,8 @@ echo "</pre>";
 
 $texts = $_POST['text'];
 $ids = $_POST['id'];
+
+// 判斷資料表是誰
 $table = $_POST['table'];
 $db=new DB($table);
 

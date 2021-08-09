@@ -25,6 +25,7 @@ include "../base.php";
     <input type="submit" value="新增">
     <input type="reset" value="重置">
     
+    <!-- 資料表title -->
     <input type="hidden" name="table" value="title">
 
 </div>
