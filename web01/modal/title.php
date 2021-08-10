@@ -29,4 +29,4 @@ include "../base.php";
     <input type="hidden" name="table" value="title">
 
 </div>
-</form
+</form>

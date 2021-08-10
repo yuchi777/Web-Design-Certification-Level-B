@@ -26,4 +26,4 @@ include "../base.php";
 
     <input type="hidden" name="table" value="menu">
 </div>
-</form
+</form>

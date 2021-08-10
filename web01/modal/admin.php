@@ -34,4 +34,4 @@ include "../base.php";
     <!-- 資料表admin -->
     <input type="hidden" name="table" value="admin">
 </div>
-</form
+</form>

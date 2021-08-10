@@ -27,4 +27,4 @@ include "../base.php";
     <input type="hidden" name="id" value="<?=$_GET['id'];?>">
 
 </div>
-</form
+</form>

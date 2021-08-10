@@ -22,4 +22,4 @@ include "../base.php";
     <!-- 資料表ad -->
     <input type="hidden" name="table" value="ad">
 </div>
-</form
+</form>

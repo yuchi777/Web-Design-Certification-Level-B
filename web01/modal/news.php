@@ -22,4 +22,4 @@ include "../base.php";
     <!-- 資料表image -->
     <input type="hidden" name="table" value="news">
 </div>
-</form
+</form>

@@ -24,4 +24,4 @@ include "../base.php";
     <input type="hidden" name="table" value="image">
 
 </div>
-</form
+</form>
