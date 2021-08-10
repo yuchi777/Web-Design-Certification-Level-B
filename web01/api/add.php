@@ -32,6 +32,10 @@ switch ($_POST['table']) {
         $data['acc'] = $_POST['acc'];
         $data['pw'] = $_POST['pw'];
         break;
+    case 'menu':
+        $data['text'] = $_POST['text'];
+        $data['href'] = $_POST['href'];
+        break;
     
     // 其他
     default:
@@ -41,6 +45,7 @@ switch ($_POST['table']) {
 };
 
 
-
+// print_r($data);
 $db->save($data);
+
 to("../backend.php?do=".$_POST['table']);

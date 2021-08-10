@@ -42,6 +42,11 @@ foreach ($ids as $key => $id) {
                 $row['acc'] = $_POST['acc'][$key];
                 $row['pw'] = $_POST['pw'][$key];
                 break;
+            case 'menu':
+                $row['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh']))?1:0;
+                $row['text'] = $_POST['text'][$key];
+                $row['href'] = $_POST['href'][$key];
+                break;
             default:
                 $row['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh']))?1:0;
                 $row['text'] = $_POST['text'][$key];
