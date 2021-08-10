@@ -2,7 +2,7 @@
 include "../base.php";
 ?>
 
-<h3 style="text-align: center;">編輯次選單<?= $_GET['id']; ?></h3>
+<h3 style="text-align: center;">編輯次選單</h3>
 <hr>
 
 <form action="api/submenu.php" method="post" enctype="multipart/form-data">
@@ -12,18 +12,19 @@ include "../base.php";
         <td>主選單連結網址</td>
         <td>刪除</td>
     </tr>
-    <tr>
+    <!-- <tr>
         <td><input type="text" name="text[]"></td>
         <td><input type="text" name="href[]"></td>
         <td></td>
-    </tr>
+    </tr> -->
 </table>
 <div style="text-align: center;">
     <input type="submit" value="新增">
     <input type="reset" value="重置">
 
     <input type="button" value="更多次選單" onclick="more()">
-
+    
+    <input type="hidden" name="parent" value="<?= $_GET['id']; ?>">
     <input type="hidden" name="table" value="menu">
 </div>
 </form>
