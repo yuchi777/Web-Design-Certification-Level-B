@@ -9,14 +9,32 @@ include "../base.php";
 <table style="margin: auto;text-align:center" id="sub">   
     <tr>
         <td>次選單名稱</td>
-        <td>主選單連結網址</td>
+        <td>次選單連結網址</td>
         <td>刪除</td>
     </tr>
-    <!-- <tr>
-        <td><input type="text" name="text[]"></td>
-        <td><input type="text" name="href[]"></td>
-        <td></td>
-    </tr> -->
+
+
+    <?php
+    // <!-- 撈次選單資料 -->
+        $row = $Menu->all(['parent' => $_GET['id']]);
+        foreach ($row as $key => $value) {
+            # code...
+    ?>
+    <tr>
+        <td><input type="text" name="text[]" value="<?= $value['text']; ?>"></td>
+        <td><input type="text" name="href[]" value="<?= $value['href']; ?>"></td>
+        <td>
+            <input type="checkbox" name="del[]" value=" <?= $value['id']; ?>">
+        </td>
+        <input type="hidden" name="id[]" value="<?= $value['id']; ?>">
+    </tr>
+    <?php
+        }
+    
+    
+    ?>
+
+
 </table>
 <div style="text-align: center;">
     <input type="submit" value="新增">
