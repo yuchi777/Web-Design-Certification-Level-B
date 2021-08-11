@@ -27,8 +27,13 @@ include_once "./base.php";
 	<!-- 刪除iframe  -->
 	<!-- <iframe style="display:none;" name="back" id="back"></iframe> -->
 	<div id="main">
-		<a title="" href="./home_files/home.htm">
-			<div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div>
+
+
+		<!-- 回首頁設定,替代文字 -->
+		<a title="<?= $Title->find(['sh'=>1])['text'];?>" href="./index.php">
+
+			<div class="ti" style="background:url(&#39;img/<?= $Title->find(['sh'=>1])['img'];?>&#39;); background-size:cover;"></div>
+
 			<!--標題-->
 		</a>
 		<div id="ms">

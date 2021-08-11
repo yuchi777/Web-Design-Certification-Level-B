@@ -19,15 +19,13 @@ include "./base.php";
 	<script src="./js/jquery-1.9.1.min.js"></script>
 	<script src="./js/js.js"></script>
 	<style>
-		a{
+		a {
 			text-decoration: none;
 		}
 
-		a:hover{
+		a:hover {
 			text-decoration: underline;
 		}
-
-
 	</style>
 </head>
 
@@ -41,10 +39,14 @@ include "./base.php";
 	<!-- 刪除iframe  -->
 	<!-- <iframe style="display:none;" name="back" id="back"></iframe> -->
 	<div id="main">
-		<a title="" href="?">
-			<div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div>
+
+		<a title="<?= $Title->find(['sh' => 1])['text']; ?>" href="./index.php">
+
+			<div class="ti" style="background:url(&#39;img/<?= $Title->find(['sh' => 1])['img']; ?>&#39;); background-size:cover;"></div>
+
 			<!--標題-->
 		</a>
+		
 		<div id="ms">
 			<div id="lf" style="float:left;">
 				<div id="menuput" class="dbor">
@@ -95,9 +97,9 @@ include "./base.php";
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :
-					<?=
-					$Total->find(1)["total"];
-					?>
+						<?=
+						$Total->find(1)["total"];
+						?>
 					</span>
 				</div>
 			</div>
