@@ -115,9 +115,37 @@ include_once "./base.php";
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=login&#39;)">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+
+					<!-- 載入icon和圖片 -->
+					<div style="text-align: center;" onclick="pp(1)">
+						<img src="icon/up.jpg">
+					</div>
+
+
+					<?php
+						$imgs = $Image->all(['sh'=>1]);
+						foreach ($imgs as $key => $value) {
+							echo "<div class='cent im' id='ssaa{$key}'>";
+							echo "<img src='img/{$value['img']}' style='width:150px; height:103px; margin:5px; border: 3px solid orange'>";
+							echo "</div>";
+							
+						}
+					?>
+
+
+					<div style="text-align: center;" onclick="pp(2)">
+						<img src="icon/dn.jpg">
+					</div>
+
+
+
+
+
 					<script>
 						var nowpage = 0,
-							num = 0;
+
+							// 顯示的圖片筆數
+							num = <?= $Image->count(['sh'=>1]); ?>;
 
 						function pp(x) {
 							var s, t;
@@ -128,6 +156,8 @@ include_once "./base.php";
 								nowpage++;
 							}
 							$(".im").hide()
+
+							// 從0開始到2共show三張
 							for (s = 0; s <= 2; s++) {
 								t = s * 1 + nowpage * 1;
 								$("#ssaa" + t).show()
