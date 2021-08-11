@@ -17,16 +17,9 @@ if(isset($_POST['text2'])){
             $new['parent'] = $_POST['parent'];
 
             $Menu->save($new);
-
         }
-
-
-
     }
-
 }
-
-
 
 
 
@@ -41,16 +34,11 @@ if(isset($_POST['text'])){
             $row['href'] = $_POST['href'][$key];
             $Menu->save($row);
         }
-
-
-
-
-
     }
 }
 
+
+
+
 to("../backend.php?do=menu");
-
-
-
 ?>

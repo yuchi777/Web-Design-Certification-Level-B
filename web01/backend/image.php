@@ -22,9 +22,22 @@
 
 
 
-                <!-- 從mvim.php複製全部過來 -->
                 <?php
-                    $rows = $Image->all();
+                // 分頁
+                // 撈總筆數 // Image資料表
+                $all = $Image->count();
+                //幾筆為一頁
+                $div = 3;
+                //總頁數,無條件進位
+                $pages = ceil($all/$div);
+                //目前位於哪一頁,預設第一頁
+                $now = (isset($_GET['p']))?$_GET['p']:"1";
+                //從哪一頁開始, 取幾筆頁數// 1->0 1 2, 2->3 4 5, 3->6 7 8
+                $start = ($now - 1) * $div;
+
+
+                    // <!-- 從mvim.php複製全部過來 -->
+                    $rows = $Image->all("Limit $start, $div");
                     // echo "<pre>";
                     // print_r($rows);
                     // echo "</pre>";
@@ -67,6 +80,28 @@
             </tbody>
         </table>
 
+        <!-- 分頁 -->
+        <div style="text-align: center;">
+            <?php
+                // 上一頁>0
+                if(($now-1)>0){
+                    echo "<a href='?do=image&p=".($now-1)."'> < </a>";
+                };
+                
+                for($i=1; $i<=$pages; $i++){
+                    $fontSize=($now==$i)?'25px':'16px';
+                    echo "<a href='?do=image&p=".$i."' style='font-size:$fontSize'> $i </a> ";
+                };
+
+                // 下一頁<=總頁數
+                if(($now+1)<=$pages){
+                    echo "<a href='?do=image&p=".($now+1)."'> > </a>" ;
+                };
+            
+            
+            ?>
+
+        </div>
 
         <table style="margin-top:40px; width:70%;">
             <tbody>

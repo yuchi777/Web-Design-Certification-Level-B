@@ -18,7 +18,7 @@ include "../base.php";
     // <!-- 撈次選單資料 -->
         $row = $Menu->all(['parent' => $_GET['id']]);
         foreach ($row as $key => $value) {
-            # code...
+            
     ?>
     <tr>
         <td><input type="text" name="text[]" value="<?= $value['text']; ?>"></td>
