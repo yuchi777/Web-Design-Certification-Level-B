@@ -112,10 +112,10 @@ include "./base.php";
 
 
 
-							<td><button onclick="document.location.replace(&#39;index.php?do=login&#39;)" style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
+							<td><button onclick="document.location.replace(&#39;../web01/api/logout.php&#39;)" style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
 
 
-
+		
 						</tr>
 					</tbody>
 				</table>
